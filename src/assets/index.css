@@ -1,0 +1,10 @@
+body {
+  background-color: #f9f9f9;
+}
+body a {
+  text-decoration: none;
+  color: #560000;
+}
+body .wordColor {
+  color: #560000;
+}
