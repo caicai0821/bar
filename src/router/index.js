@@ -8,12 +8,18 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Head from '@/components/common/head.vue'
+import Tail from '@/components/common/tail.vue'
 Vue.use(VueRouter)
 
 const routes = [
+  // 组件
   {
     path: '/head',
     component: Head,
+  },
+  {
+    path: '/tail',
+    component: Tail,
   },
 ]
 
