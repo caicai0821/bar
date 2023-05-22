@@ -1,7 +1,7 @@
 <!--
  * @Author       : 蔡诗涵
  * @Date         : 2023-04-26 10:56:36
- * @LastEditTime : 2023-05-08 16:48:46
+ * @LastEditTime : 2023-05-19 16:36:48
  * @Description  : 注册组件
  *
 -->
@@ -59,7 +59,7 @@
         </button>
       </div>
       <div>
-        <button class="registerBtn2" @click="register">立即注册</button>
+        <button class="registerBtn2" @click="register1">立即注册</button>
       </div>
     </div>
   </div>
@@ -70,7 +70,7 @@ export default {
   name: 'MyLogin',
   data() {
     return {
-      is: false,
+      is: true,
       count: '',
       show: true,
       timer: null,
@@ -86,6 +86,9 @@ export default {
   methods: {
     register() {
       this.is = false
+    },
+    register1() {
+      this.$router.push('/login')
     },
     getCode() {
       const TIME_COUNT = 60

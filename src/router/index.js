@@ -1,7 +1,7 @@
 /*
  * @Author       : 蔡诗涵
  * @Date         : 2023-04-19 11:18:08
- * @LastEditTime : 2023-05-07 19:08:57
+ * @LastEditTime : 2023-05-19 16:43:01
  * @Description  : 路由
  *
  */
@@ -28,6 +28,15 @@ const routes = [
   {
     path: '/register',
     component: () => import('@/components/common/register.vue'),
+  },
+  {
+    path: '/btn',
+    component: () => import('@/components/common/comment.vue'),
+  },
+  // 页面路由
+  {
+    path: '/WineIntroduction',
+    component: () => import('@/views/npcViews/WineFormula/WineFormula.vue'),
   },
 ]
 

@@ -1,7 +1,7 @@
 <!--
  * @Author       : 蔡诗涵
  * @Date         : 2023-04-19 16:58:45
- * @LastEditTime : 2023-04-20 22:23:33
+ * @LastEditTime : 2023-05-20 23:56:19
  * @Description  : 页面头部导航
  *
 -->
@@ -96,7 +96,7 @@ export default {
       display: flex;
       padding: 5px 5px 0 0;
       justify-content: center;
-      z-index: 20;
+      z-index: 3;
       display: flex;
       color: #fff;
       font-size: 18px;
