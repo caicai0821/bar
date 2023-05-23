@@ -31,6 +31,7 @@
           </div>
         </div>
       </div>
+      <el-divider></el-divider>
       <!-- 评论层 -->
       <div class="newComment" v-if="userList.isNew">
         <div class="text">
@@ -104,6 +105,14 @@
                 发表
               </button>
             </div>
+          </div>
+          <!-- 文字回复 -->
+          <div
+            class="replay"
+            v-for="(i, index) in item.contentList"
+            :key="index + 'q'"
+          >
+            {{ i.UserName }}{{ reliyName(item.UserName) }}：{{ i.content }}
           </div>
         </div>
       </div>
@@ -353,6 +362,10 @@ export default {
               background-color: #a4adb3;
             }
           }
+        }
+        .replay {
+          font-size: 14px;
+          color: #9f9f9f;
         }
       }
     }
