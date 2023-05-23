@@ -124,32 +124,31 @@
 import star from '@/components/WineFormula/star.vue'
 export default {
   components: { star },
+  props: ['userList'],
   name: 'MyComment',
   data() {
     return {
-      name: '从众的阿希',
-      time: '2022-05-26 ',
-      userList: {
-        userImg: require('@/../public/images/bb6e6077d0b12d623c5f0172d35975b4.jpeg'),
-        UserName: 'caicai',
-        content:
-          ' “Like all forms of design, visual design is about problem-solving, not about personal preference or unsupported opinion.” — Bob Baxley /n “像其他设计一样，视觉设计也是解决问题，不是个人喜好。” “Like all forms of design, visual design is about problem-solving, not about personal preference or unsupported opinion.” — Bob Baxley “像其他设计一样，视觉设计也是解决问题，不是个人喜好。”',
-        replayTime: '2023-05-22',
-        isUp: false,
-        score: 9,
-        isNew: false,
-        contentList: [
-          {
-            toId: '1',
-            userImg: require('@/../public/images/bb6e6077d0b12d623c5f0172d35975b4.jpeg'),
-            UserName: '小张小张',
-            content: '111111',
-            replayTime: '2023-05-22',
-            isUp: false,
-            isNew: false,
-          },
-        ],
-      },
+      // userList: {
+      //   userImg: require('@/../public/images/bb6e6077d0b12d623c5f0172d35975b4.jpeg'),
+      //   UserName: 'caicai',
+      //   content:
+      //     ' “Like all forms of design, visual design is about problem-solving, not about personal preference or unsupported opinion.” — Bob Baxley /n “像其他设计一样，视觉设计也是解决问题，不是个人喜好。” “Like all forms of design, visual design is about problem-solving, not about personal preference or unsupported opinion.” — Bob Baxley “像其他设计一样，视觉设计也是解决问题，不是个人喜好。”',
+      //   replayTime: '2023-05-22',
+      //   isUp: false,
+      //   score: 9,
+      //   isNew: false,
+      //   contentList: [
+      //     {
+      //       toId: '1',
+      //       userImg: require('@/../public/images/bb6e6077d0b12d623c5f0172d35975b4.jpeg'),
+      //       UserName: '小张小张',
+      //       content: '111111',
+      //       replayTime: '2023-05-22',
+      //       isUp: false,
+      //       isNew: false,
+      //     },
+      //   ],
+      // },
       comment: '',
     }
   },
@@ -230,7 +229,7 @@ export default {
   .right {
     display: flex;
     flex-direction: column;
-    width: 80vw;
+    width: 70vw;
     // background-color: rgb(91, 99, 99);
     .top {
       display: flex;
@@ -273,7 +272,7 @@ export default {
       .text {
         position: relative;
         min-width: 200px;
-        width: 600px;
+        width: 80%;
       }
       .publish {
         .publishBtn {
@@ -307,7 +306,7 @@ export default {
       .right {
         display: flex;
         flex-direction: column;
-        width: 70vw;
+        width: 60vw;
         // background-color: rgb(91, 99, 99);
         .top {
           display: flex;

@@ -1,7 +1,7 @@
 <!--
  * @Author       : 蔡诗涵
  * @Date         : 2023-05-10 16:14:51
- * @LastEditTime : 2023-05-22 15:55:21
+ * @LastEditTime : 2023-05-23 17:11:44
  * @Description  :
  *
 -->
@@ -142,11 +142,14 @@
         <div class="title">
           <div>
             <img src="@/assets/icons/用户.png" alt="" />
-            <span>美酒配方</span>
+            <span>用户评论</span>
           </div>
           <div class="commentBtn">
             <button class="btn">我来说两句</button>
           </div>
+        </div>
+        <div class="content">
+          <comment :userList="userList"></comment>
         </div>
       </div>
     </div>
@@ -164,6 +167,7 @@ import collectBtnVue from '@/components/WineFormula/collectBtn.vue'
 import shareBtn from '@/components/WineFormula/shareBtn.vue'
 import upvoteBtnVue from '@/components/WineFormula/upvoteBtn.vue'
 import wineListPopups from '@/components/WineFormula/wineListPopups.vue'
+import comment from '@/components/common/comment.vue'
 export default {
   components: {
     Head,
@@ -175,6 +179,7 @@ export default {
     shareBtn,
     upvoteBtnVue,
     wineListPopups,
+    comment,
   },
   data() {
     return {
@@ -262,6 +267,28 @@ export default {
       },
       isUp: '',
       flag: false,
+      // 评论数据
+      userList: {
+        userImg: require('@/../public/images/bb6e6077d0b12d623c5f0172d35975b4.jpeg'),
+        UserName: 'caicai',
+        content:
+          ' “Like all forms of design, visual design is about problem-solving, not about personal preference or unsupported opinion.” — Bob Baxley /n “像其他设计一样，视觉设计也是解决问题，不是个人喜好。” “Like all forms of design, visual design is about problem-solving, not about personal preference or unsupported opinion.” — Bob Baxley “像其他设计一样，视觉设计也是解决问题，不是个人喜好。”',
+        replayTime: '2023-05-22',
+        isUp: false,
+        score: 9,
+        isNew: false,
+        contentList: [
+          {
+            toId: '1',
+            userImg: require('@/../public/images/bb6e6077d0b12d623c5f0172d35975b4.jpeg'),
+            UserName: '小张小张',
+            content: '111111',
+            replayTime: '2023-05-22',
+            isUp: false,
+            isNew: false,
+          },
+        ],
+      },
       // 统计图数据
     }
   },
@@ -479,7 +506,6 @@ export default {
   }
   .bottom {
     width: 100%;
-    height: 100px;
 
     .title {
       display: flex;
@@ -512,6 +538,12 @@ export default {
           border: 1px solid #5194d8;
         }
       }
+    }
+    .content {
+      position: relative;
+      display: block;
+      width: 80vw;
+      background-color: #fff;
     }
   }
 }
