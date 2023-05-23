@@ -2,98 +2,109 @@
   <div class="comment">
     <div class="left">
       <div class="picture">
-        <img
-          src="@/../public/images/bb6e6077d0b12d623c5f0172d35975b4.jpeg"
-          alt=""
-        />
+        <img :src="userList.userImg" alt="" />
       </div>
     </div>
     <div class="right">
       <div class="top">
-        <span>{{ name }}</span>
-        <star :size="15" :is-star="Math.floor(9 / 2)"></star>
+        <span>{{ userList.UserName }}</span>
+        <star :size="15" :is-star="Math.floor(userList.score / 2)"></star>
       </div>
       <div class="middle">
-        <p>
-          “Like all forms of design, visual design is about problem-solving, not
-          about personal preference or unsupported opinion.” — Bob Baxley
-          “像其他设计一样，视觉设计也是解决问题，不是个人喜好。” “Like all forms
-          of design, visual design is about problem-solving, not about personal
-          preference or unsupported opinion.” — Bob Baxley
-          “像其他设计一样，视觉设计也是解决问题，不是个人喜好。”
-        </p>
+        <p>{{ userList.content }}</p>
       </div>
       <div class="bottom">
         <div class="timeDiv">
-          {{ time }}
+          {{ userList.replayTime }}
         </div>
         <div class="btnDiv">
-          <div class="upVoteBtn" @click="getUp">
+          <div class="upVoteBtn" @click="getUp(userList)">
             <img v-if="userList.isUp" src="@/assets/icons/已点赞.png" alt="" />
             <img v-else src="@/assets/icons/点赞.png" alt="" />
           </div>
-          <div class="commentBtn" @click="showComment" ref="commentimg">
+          <div
+            class="commentBtn"
+            @click="showComment(userList)"
+            ref="commentimg"
+          >
             <img src="@/assets/icons/3.1 评论.png" alt="" />
           </div>
         </div>
       </div>
-      <!-- 用户评论用户层 -->
-      <div class="userCommentDiv">
-        <div class="left">
-          <div class="picture">
-            <img
-              src="@/../public/images/bb6e6077d0b12d623c5f0172d35975b4.jpeg"
-              alt=""
-            />
-          </div>
-        </div>
-        <div class="right">
-          <div class="top">
-            <span>{{ name }}</span>
-          </div>
-          <div class="middle">
-            <p>
-              “Like all forms of design, visual design is about problem-solving,
-              not about personal preference or unsupported opinion.” — Bob
-              Baxley “像其他设计一样，视觉设计也是解决问题，不是个人喜好。”
-              “Like all forms of design, visual design is about problem-solving,
-              not about personal preference or unsupported opinion.” — Bob
-              Baxley “像其他设计一样，视觉设计也是解决问题，不是个人喜好。”
-            </p>
-          </div>
-          <div class="bottom">
-            <div class="timeDiv">
-              {{ time }}
-            </div>
-            <div class="btnDiv">
-              <div class="upVoteBtn" @click="getUp">
-                <img
-                  v-if="userList.contentList[0].isUp"
-                  src="@/assets/icons/已点赞.png"
-                  alt=""
-                />
-                <img v-else src="@/assets/icons/点赞.png" alt="" />
-              </div>
-              <div class="commentBtn" @click="showComment" ref="commentimg">
-                <img src="@/assets/icons/3.1 评论.png" alt="" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="newComment" v-if="isNew">
+      <!-- 评论层 -->
+      <div class="newComment" v-if="userList.isNew">
         <div class="text">
           <el-input
             type="textarea"
             :autosize="{ minRows: 2, maxRows: 10 }"
-            :placeholder="reliyName(name)"
+            :placeholder="reliyName(userList.UserName)"
             resize="none"
-            v-model="content"
+            v-model="comment"
           >
           </el-input>
         </div>
         <div class="publish">
-          <button class="publishBtn" @click="concealComment">发表</button>
+          <button class="publishBtn" @click="concealComment(userList)">
+            发表
+          </button>
+        </div>
+      </div>
+      <!-- 用户评论用户层 -->
+      <div
+        class="userCommentDiv"
+        v-for="(item, index) in userList.contentList"
+        :key="index"
+      >
+        <div class="left">
+          <div class="picture">
+            <img :src="item.userImg" />
+          </div>
+        </div>
+        <div class="right">
+          <div class="top">
+            <span>{{ item.UserName }}</span>
+          </div>
+          <div class="middle">
+            <p>
+              {{ item.content }}
+            </p>
+          </div>
+          <div class="bottom">
+            <div class="timeDiv">
+              {{ item.replayTime }}
+            </div>
+            <div class="btnDiv">
+              <div class="upVoteBtn" @click="getUp(item)">
+                <img v-if="item.isUp" src="@/assets/icons/已点赞.png" alt="" />
+                <img v-else src="@/assets/icons/点赞.png" alt="" />
+              </div>
+              <div
+                class="commentBtn"
+                @click="showComment(item)"
+                ref="commentimg"
+              >
+                <img src="@/assets/icons/3.1 评论.png" alt="" />
+              </div>
+            </div>
+          </div>
+          <!-- 评论层 -->
+          <div class="newComment" v-if="item.isNew">
+            <div class="text">
+              <el-input
+                type="textarea"
+                :autosize="{ minRows: 2, maxRows: 10 }"
+                :placeholder="reliyName(item.UserName)"
+                resize="none"
+                v-model="comment"
+              >
+              </el-input>
+            </div>
+            <div class="publish">
+              <button class="publishBtn" @click="concealComment(item)">
+                发表
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -112,22 +123,25 @@ export default {
       userList: {
         userImg: require('@/../public/images/bb6e6077d0b12d623c5f0172d35975b4.jpeg'),
         UserName: 'caicai',
-        content: '111111',
+        content:
+          ' “Like all forms of design, visual design is about problem-solving, not about personal preference or unsupported opinion.” — Bob Baxley /n “像其他设计一样，视觉设计也是解决问题，不是个人喜好。” “Like all forms of design, visual design is about problem-solving, not about personal preference or unsupported opinion.” — Bob Baxley “像其他设计一样，视觉设计也是解决问题，不是个人喜好。”',
         replayTime: '2023-05-22',
         isUp: false,
-
+        score: 9,
+        isNew: false,
         contentList: [
           {
+            toId: '1',
             userImg: require('@/../public/images/bb6e6077d0b12d623c5f0172d35975b4.jpeg'),
-            UserName: 'caicai',
+            UserName: '小张小张',
             content: '111111',
             replayTime: '2023-05-22',
             isUp: false,
+            isNew: false,
           },
         ],
       },
-      content: '',
-      isNew: false,
+      comment: '',
     }
   },
   methods: {
@@ -136,31 +150,36 @@ export default {
       return '回复：' + x
     },
     // 点赞
-    getUp() {
-      console.log('111')
-      this.userList.isUp = !this.userList.isUp
+    getUp(x) {
+      if (x.isUp) {
+        x.isUp = false
+      } else {
+        x.isUp = true
+      }
+
+      console.log(1, this.userList.isUp)
+      console.log(2, x)
     },
     // 展示文本框
-    showComment() {
-      this.isNew = !this.isNew
-      if (this.isNew) {
-        this.$refs.commentimg.style.backgroundColor = '#e5e5e5'
-      } else {
-        this.$refs.commentimg.style.backgroundColor = ''
-      }
-      this.content = ''
+    showComment(x) {
+      this.comment = ''
+      x.isNew = !x.isNew
     },
     // 判断文本框不为空，并发布
-    concealComment() {
-      if (this.content === '') {
+    concealComment(x) {
+      if (this.comment === '') {
         return this.$message('内容不能为空')
       }
-      this.$refs.commentimg.style.backgroundColor = ''
-      this.isNew = false
-      this.userList.contentList.push({
+      if (!x.contentList) {
+        this.$set(x, 'contentList', [])
+      }
+      x.isNew = false
+      x.contentList.push({
         userImg: require('@/../public/images/bb6e6077d0b12d623c5f0172d35975b4.jpeg'),
         UserName: 'caicai',
-        content: this.content,
+        content: this.comment,
+        isUp: false,
+        isNew: false,
         replayTime: this.currentTime(),
       })
     },
@@ -168,8 +187,6 @@ export default {
     currentTime() {
       const date = new Date()
       const year = date.getFullYear() // 月份从0~11，所以加一
-      const month = date.getMonth()
-      console.log('month', month)
       const dateArr = [date.getMonth() + 1, date.getDate()]
       // 如果格式是MM则需要此步骤，如果是M格式则此循环注释掉
       for (let i = 0; i < dateArr.length; i++) {
@@ -181,7 +198,6 @@ export default {
       return strDate
     },
   },
-  created() {},
 }
 </script>
 
@@ -236,8 +252,6 @@ export default {
           width: 15px;
           height: 15px;
         }
-        .commentBtn {
-        }
       }
     }
     .newComment {
@@ -263,10 +277,10 @@ export default {
         }
       }
     }
+    // <!-- 用户评论用户层 -->
     .userCommentDiv {
       display: flex;
       position: relative;
-      // width: 1200px;
       color: #000;
       font-size: 14px;
       background-color: #e5e5e5;
@@ -284,7 +298,7 @@ export default {
       .right {
         display: flex;
         flex-direction: column;
-        width: 80vw;
+        width: 70vw;
         // background-color: rgb(91, 99, 99);
         .top {
           display: flex;
