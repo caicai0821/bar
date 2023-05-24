@@ -47,12 +47,10 @@ export default {
   methods: {
     getMax() {
       const max = Math.max.apply(null, Object.values(this.list))
-      console.log(max)
       return max
     },
     getSize(max, n) {
       const x = 200 / max
-      console.log(x * n)
       return x * n + 'px'
     },
   },

@@ -1,3 +1,11 @@
+<!--
+ * @Author       : 蔡诗涵
+ * @Date         : 2023-05-23 00:15:59
+ * @LastEditTime : 2023-05-23 19:48:48
+ * @Description  :评论组件
+ *
+-->
+
 <template>
   <div class="comment">
     <div class="left">
@@ -213,6 +221,7 @@ export default {
 .comment {
   display: flex;
   position: relative;
+  margin-bottom: 20px;
   // width: 1200px;
   color: #000;
   .left {
@@ -306,7 +315,7 @@ export default {
       .right {
         display: flex;
         flex-direction: column;
-        width: 60vw;
+        width: 90vw;
         // background-color: rgb(91, 99, 99);
         .top {
           display: flex;
