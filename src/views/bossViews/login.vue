@@ -1,7 +1,7 @@
 <!--
  * @Author       : 蔡诗涵
  * @Date         : 2023-05-24 16:15:58
- * @LastEditTime : 2023-05-30 13:22:13
+ * @LastEditTime : 2023-05-30 13:31:08
  * @Description  :管理员登录页
  *
 -->
@@ -117,7 +117,7 @@ export default {
       this.$refs.loginForm.validate((valid) => {
         if (valid) {
           console.log(valid)
-          router.push('/boss/home')
+          router.push('/boss/visit')
           this.loading = true
         } else {
           console.log('error submit!!')

@@ -1,7 +1,7 @@
 <!--
  * @Author       : 蔡诗涵
  * @Date         : 2023-05-24 23:06:01
- * @LastEditTime : 2023-05-29 20:42:09
+ * @LastEditTime : 2023-05-30 13:54:19
  * @Description  : 管理端布局
  *
 -->
@@ -12,7 +12,7 @@
         酒厂管理点
         <el-menu
         :router='true'
-       default-active="1"
+       default-active="visit"
       class="el-menu-vertical-demo"
       @open="handleOpen"
       @close="handleClose"
@@ -20,38 +20,38 @@
       text-color="#fff"
       active-text-color="#ffd04b"
       :unique-opened='true'>
-      <el-submenu index="/home">
+      <el-submenu index="1">
         <template slot="title">
           <i class="el-icon-s-platform"></i>
           <span>首页</span>
         </template>
         <el-menu-item-group>
-          <el-menu-item  index="home/visit">
+          <el-menu-item  index="visit">
             <i class="el-icon-s-marketing"></i>
             周访问量</el-menu-item>
-          <el-menu-item index="1-2">
+          <el-menu-item index="area">
             <i class="el-icon-location"></i>
             用户地域分布</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
-      <el-submenu index="home/2">
+      <el-submenu index="2">
         <template slot="title">
           <i class="el-icon-s-custom"></i>
           <span slot="title">用户管理</span>
         </template>
         <el-menu-item-group>
-          <el-menu-item index="2-1">
+          <el-menu-item index="userList">
             <i class="el-icon-s-custom"></i>
             用户列表</el-menu-item>
-          <el-menu-item index="2-2">
+          <el-menu-item index="userOnline">
             <i class="el-icon-s-custom"></i>
             在线用户</el-menu-item>
-          <el-menu-item index="2-3">
+          <el-menu-item index="bartender">
             <i class="el-icon-s-management"></i>
             申请调酒师</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
-      <el-menu-item index="3">
+      <el-menu-item index="systemManagement">
         <i class="el-icon-s-tools"></i>
         <span slot="title">系统管理</span>
       </el-menu-item>
@@ -62,15 +62,15 @@
       </template>
         <el-menu-item-group>
           <!-- 酒的种类 -->
-          <el-menu-item index="4-1">
+          <el-menu-item index="wineType">
             <i class="el-icon-goblet-square-full"></i>
             种类管理</el-menu-item>
           <!-- 一瓶酒的信息 -->
-          <el-menu-item index="4-2">
+          <el-menu-item index="wineInfo">
             <i class="el-icon-goblet-square-full"></i>
             酒品信息</el-menu-item>
           <!-- 调制酒的配方页信息 -->
-          <el-menu-item index="4-3">
+          <el-menu-item index="wineRecipe">
             <i class="el-icon-goblet-square-full"></i>
             酒品配方</el-menu-item>
         </el-menu-item-group>
