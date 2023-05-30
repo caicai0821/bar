@@ -1,7 +1,7 @@
 <!--
  * @Author       : 蔡诗涵
  * @Date         : 2023-05-24 23:06:01
- * @LastEditTime : 2023-05-27 14:53:27
+ * @LastEditTime : 2023-05-29 20:42:09
  * @Description  : 管理端布局
  *
 -->
@@ -11,21 +11,22 @@
       <el-aside width="200px">
         酒厂管理点
         <el-menu
-      default-active="1"
+        :router='true'
+       default-active="1"
       class="el-menu-vertical-demo"
       @open="handleOpen"
       @close="handleClose"
       background-color="#304156"
       text-color="#fff"
       active-text-color="#ffd04b"
-      unique-opened='true'>
-      <el-submenu index="1">
+      :unique-opened='true'>
+      <el-submenu index="/home">
         <template slot="title">
           <i class="el-icon-s-platform"></i>
           <span>首页</span>
         </template>
         <el-menu-item-group>
-          <el-menu-item index="1-1">
+          <el-menu-item  index="home/visit">
             <i class="el-icon-s-marketing"></i>
             周访问量</el-menu-item>
           <el-menu-item index="1-2">
@@ -33,7 +34,7 @@
             用户地域分布</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
-      <el-submenu index="2">
+      <el-submenu index="home/2">
         <template slot="title">
           <i class="el-icon-s-custom"></i>
           <span slot="title">用户管理</span>
@@ -110,7 +111,7 @@
           <el-dropdown trigger="click">
             <span>管理员</span>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item>退出登录</el-dropdown-item>
+            <el-dropdown-item :split-button="true" @click.native="exit">退出登录</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
         <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
@@ -125,12 +126,22 @@
 
 <script>
 export default {
+  data() {
+    return {
+      root: ''
+    }
+  },
   methods: {
     handleOpen(key, keyPath) {
       console.log(key, keyPath)
     },
     handleClose(key, keyPath) {
       console.log(key, keyPath)
+    },
+    // 退出
+    exit() {
+      console.log('1111')
+      this.$router.push('/boss/Login')
     }
   }
 }
@@ -146,6 +157,7 @@ export default {
     background-color: #ffffff;
     color: #333;
     line-height: 50px;
+    cursor: default;
     span{
       display: inline-block;
       margin-left: 10px;

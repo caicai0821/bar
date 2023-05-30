@@ -1,7 +1,7 @@
 <!--
  * @Author       : 蔡诗涵
  * @Date         : 2023-05-24 16:15:58
- * @LastEditTime : 2023-05-24 21:52:23
+ * @LastEditTime : 2023-05-30 13:22:13
  * @Description  :管理员登录页
  *
 -->
@@ -65,6 +65,7 @@
 
 <script>
 import { validUsername } from '@/utils/validate'
+import router from '@/router'
 
 export default {
   name: 'BossLogin',
@@ -101,14 +102,6 @@ export default {
       redirect: undefined,
     }
   },
-  watch: {
-    $route: {
-      handler: function (route) {
-        this.redirect = route.query && route.query.redirect
-      },
-      immediate: true,
-    },
-  },
   methods: {
     showPwd() {
       if (this.passwordType === 'password') {
@@ -123,16 +116,9 @@ export default {
     handleLogin() {
       this.$refs.loginForm.validate((valid) => {
         if (valid) {
+          console.log(valid)
+          router.push('/boss/home')
           this.loading = true
-          this.$store
-            .dispatch('user/login', this.loginForm)
-            .then(() => {
-              this.$router.push({ path: this.redirect || '/' })
-              this.loading = false
-            })
-            .catch(() => {
-              this.loading = false
-            })
         } else {
           console.log('error submit!!')
           return false

@@ -1,12 +1,9 @@
 /*
  * @Author       : 蔡诗涵
  * @Date         : 2023-05-24 16:25:03
- * @LastEditTime : 2023-05-24 16:25:14
- * @Description  :
+ * @LastEditTime : 2023-05-30 11:39:45
+ * @Description  : 正则表达式（用户名，密码）
  *
- */
-/**
- * Created by PanJiaChen on 16/11/18.
  */
 
 /**

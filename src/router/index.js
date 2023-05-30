@@ -1,7 +1,7 @@
 /*
  * @Author       : 蔡诗涵
  * @Date         : 2023-04-19 11:18:08
- * @LastEditTime : 2023-05-26 12:08:36
+ * @LastEditTime : 2023-05-27 15:18:28
  * @Description  : 路由
  *
  */
@@ -9,7 +9,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Head from '@/components/common/head.vue'
 import Tail from '@/components/common/tail.vue'
-// import MyLayout from '@/layout'
+import Layout from '@/views/bossViews/home.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -50,7 +50,12 @@ const routes = [
   {
     path: '/boss/home',
     name: 'home',
-    component: () => import('@/views/bossViews/home.vue'),
+    component: Layout,
+    children: [{
+      path: 'visit',
+      name: '用户访问量页面',
+      component: () => import('@/views/bossViews/visit.vue')
+    }]
   },
 ]
 
