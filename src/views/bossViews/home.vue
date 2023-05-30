@@ -1,7 +1,7 @@
 <!--
  * @Author       : 蔡诗涵
  * @Date         : 2023-05-24 23:06:01
- * @LastEditTime : 2023-05-30 13:54:19
+ * @LastEditTime : 2023-05-30 16:23:31
  * @Description  : 管理端布局
  *
 -->
@@ -12,7 +12,6 @@
         酒厂管理点
         <el-menu
         :router='true'
-       default-active="visit"
       class="el-menu-vertical-demo"
       @open="handleOpen"
       @close="handleClose"
@@ -177,7 +176,6 @@ export default {
     background-color: #E9EEF3;
     color: #333;
     text-align: center;
-    line-height: 160px;
   }
 
   body > .el-container {
