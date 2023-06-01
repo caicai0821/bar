@@ -63,7 +63,7 @@ export default {
   methods: {
     // 获取列表
     getList() {
-      this.$axios.get('http://localhost:8089/select/wine').then(function (response) {
+      this.$axios.get('http://localhost:8080/select/wine').then(function (response) {
         console.log(response)
       }).catch(function (error) {
         console.log(error)
