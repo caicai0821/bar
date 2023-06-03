@@ -1,7 +1,7 @@
 <!--
  * @Author       : 蔡诗涵
  * @Date         : 2023-04-26 10:56:36
- * @LastEditTime : 2023-05-19 16:36:48
+ * @LastEditTime : 2023-06-03 21:19:27
  * @Description  : 注册组件
  *
 -->
@@ -116,16 +116,20 @@ export default {
 .register {
   position: relative;
   display: flex;
+  top: 10%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  z-index: 9;
   flex-direction: column;
-  width: 640px;
-  // height: 735px;
+  width: 450px;
   border-radius: 25px;
   box-shadow: 5px 5px 15px 2px #00000036;
   background-color: #e8e8e8;
   border: 1px solid #bbbbbb;
   .close {
     position: absolute;
-    left: 590px;
+    left: 400px;
     top: 10px;
     img {
       width: 35px;
@@ -133,11 +137,10 @@ export default {
     }
   }
   .top {
-    margin: 10px auto;
+    margin: 20px auto;
     .topImg {
       img {
-        width: 205px;
-        height: 185px;
+        width: 100px;
       }
     }
     .topText {
@@ -145,16 +148,15 @@ export default {
     }
   }
   .content {
-    margin: 15px 40px;
+    margin: 15px 0px;
     /deep/ .el-input {
-      margin-bottom: 10px;
-      width: 400px;
+      width: 300px;
       .el-input__inner {
-        height: 50px;
+        height: 35px;
       }
     }
     .registerBtn {
-      margin: 0px 110px;
+      margin: 0px 54px;
       width: 177px;
       height: 45px;
       color: #fff;
@@ -186,14 +188,14 @@ export default {
   .code {
     display: flex;
     flex-direction: column;
-    margin: 20px auto;
+    margin: 20px 0 0 20px;
     /deep/ .el-input {
       margin-bottom: 10px;
       border: 1px solid #dcdfe6;
       border-radius: 4px 0px 0px 4px;
-      width: 400px;
+      width: 300px;
       .el-input__inner {
-        height: 50px;
+        height: 40px;
         border-radius: 4px 0px 0px 4px;
       }
     }
@@ -204,7 +206,7 @@ export default {
       border-radius: 0px 4px 4px 0px;
     }
     .registerBtn2 {
-      margin: 10px 152px;
+      margin: 10px 30%;
       width: 177px;
       height: 45px;
       color: #fff;

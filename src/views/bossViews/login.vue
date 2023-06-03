@@ -1,7 +1,7 @@
 <!--
  * @Author       : 蔡诗涵
  * @Date         : 2023-05-24 16:15:58
- * @LastEditTime : 2023-05-30 13:31:08
+ * @LastEditTime : 2023-06-01 18:33:44
  * @Description  :管理员登录页
  *
 -->
@@ -64,22 +64,15 @@
 </template>
 
 <script>
-import { validUsername } from '@/utils/validate'
 import router from '@/router'
 
 export default {
   name: 'BossLogin',
   data() {
-    const validateUsername = (rule, value, callback) => {
-      if (!validUsername(value)) {
-        callback(new Error('请输入正确的用户名'))
-      } else {
-        callback()
-      }
-    }
     const validatePassword = (rule, value, callback) => {
-      if (value.length < 6) {
-        callback(new Error('密码不能少于6位'))
+      if (value.length < 1) {
+        console.log(value)
+        callback(new Error('密码不能为空'))
       } else {
         callback()
       }
@@ -87,12 +80,9 @@ export default {
     return {
       loginForm: {
         username: 'admin',
-        password: '111111',
+        password: '123456',
       },
       loginRules: {
-        username: [
-          { required: true, trigger: 'blur', validator: validateUsername },
-        ],
         password: [
           { required: true, trigger: 'blur', validator: validatePassword },
         ],
@@ -116,7 +106,6 @@ export default {
     handleLogin() {
       this.$refs.loginForm.validate((valid) => {
         if (valid) {
-          console.log(valid)
           router.push('/boss/visit')
           this.loading = true
         } else {

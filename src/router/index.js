@@ -1,7 +1,7 @@
 /*
  * @Author       : 蔡诗涵
  * @Date         : 2023-04-19 11:18:08
- * @LastEditTime : 2023-05-30 13:51:36
+ * @LastEditTime : 2023-06-03 20:55:50
  * @Description  : 路由
  *
  */
@@ -41,10 +41,15 @@ const routes = [
     path: '/WineIntroduction',
     component: () => import('@/views/npcViews/WineFormula/WineFormula.vue'),
   },
+  // 用户首页
+  {
+    path: '/index',
+    component: () => import('@/views/npcViews/WineFormula/WineIndex.vue'),
+  },
   // 管理员页面
   // 登录
   {
-    path: '/boss/Login',
+    path: '/login',
     component: () => import('@/views/bossViews/login.vue'),
   },
   {
@@ -56,49 +61,49 @@ const routes = [
       {
         path: 'visit',
         name: '用户访问量页面',
-        component: () => import('@/views/bossViews/visit.vue')
+        component: () => import('@/views/bossViews/visit.vue'),
       },
       {
         path: 'area',
         name: '用户地域分布',
-        component: () => import('@/views/bossViews/area.vue')
+        component: () => import('@/views/bossViews/area.vue'),
       },
       {
         path: 'userList',
         name: '用户列表',
-        component: () => import('@/views/bossViews/userList.vue')
+        component: () => import('@/views/bossViews/userList.vue'),
       },
       {
         path: 'userOnline',
         name: '在线用户',
-        component: () => import('@/views/bossViews/userOnline.vue')
+        component: () => import('@/views/bossViews/userOnline.vue'),
       },
       {
         path: 'bartender',
         name: '申请调酒师',
-        component: () => import('@/views/bossViews/bartender.vue')
+        component: () => import('@/views/bossViews/bartender.vue'),
       },
       {
         path: 'systemManagement',
         name: '系统管理',
-        component: () => import('@/views/bossViews/systemManagement.vue')
+        component: () => import('@/views/bossViews/systemManagement.vue'),
       },
       {
         path: 'wineType',
         name: '种类管理',
-        component: () => import('@/views/bossViews/wineType.vue')
+        component: () => import('@/views/bossViews/wineType.vue'),
       },
       {
         path: 'wineInfo',
         name: '酒品信息',
-        component: () => import('@/views/bossViews/wineInfo.vue')
+        component: () => import('@/views/bossViews/wineInfo.vue'),
       },
       {
         path: 'wineRecipe',
         name: '酒品配方',
-        component: () => import('@/views/bossViews/wineRecipe.vue')
+        component: () => import('@/views/bossViews/wineRecipe.vue'),
       },
-    ]
+    ],
   },
 ]
 

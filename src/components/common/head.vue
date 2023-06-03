@@ -1,7 +1,7 @@
 <!--
  * @Author       : 蔡诗涵
  * @Date         : 2023-04-19 16:58:45
- * @LastEditTime : 2023-05-20 23:56:19
+ * @LastEditTime : 2023-06-03 20:12:18
  * @Description  : 页面头部导航
  *
 -->
@@ -41,9 +41,9 @@
       </div>
       <!-- 登录注册 -->
       <div class="linkStyle divTop">
-        <span>登录</span>
+        <span @click="login">登录</span>
         <span>&nbsp;|&nbsp;</span>
-        <span>注册</span>
+        <span @click="register">注册</span>
       </div>
     </div>
   </div>
@@ -58,6 +58,8 @@ export default {
       nav: ['首页', '排行榜', '酒厂专题', '新鲜事', '酒单', '社区', '调酒视频'],
       navTop: ['调酒师认证', '味道', '调酒师'],
       checkindex: 0,
+      isLogin: false,
+      isRegister: false,
     }
   },
   created() {},
@@ -66,6 +68,15 @@ export default {
       console.log(index)
       this.checkindex = index
       console.log(this.checkindex)
+    },
+    login() {
+      this.isLogin = true
+      this.$emit('getLogin', this.isLogin)
+      console.log('登录登录！')
+    },
+    register() {
+      this.$emit('getRegister', this.isRegister)
+      console.log('注册注册！')
     },
   },
 }
@@ -100,6 +111,7 @@ export default {
       display: flex;
       color: #fff;
       font-size: 18px;
+      cursor: pointer;
       .link {
         margin-left: 10px;
       }
