@@ -1,19 +1,20 @@
 <!--
  * @Author       : 蔡诗涵
  * @Date         : 2023-06-02 16:30:15
- * @LastEditTime : 2023-06-04 17:01:58
+ * @LastEditTime : 2023-06-04 21:32:24
  * @Description  : 用户端首页
  *
 -->
 <template>
   <div class="wineIndex">
-    <Head @getLogin="getLogin" @getRegister="getRegister"></Head>
+    <Head :name="name" @getLogin="getLogin" @getRegister="getRegister"></Head>
     <!-- 登录注册弹窗 -->
     <!-- 遮罩层 -->
     <div class="black_breakgroud" v-if="flag">
       <!-- 登录 -->
       <login
         v-if="!isRegister"
+        @isSession="getSession"
         @isRegister="getRegister"
         @closePop="closePop"
       ></login>
@@ -151,6 +152,7 @@ import Tail from '@/components/common/tail.vue'
 import star from '@/components/WineFormula/star.vue'
 import login from '@/components/common/login.vue'
 import register from '@/components/common/register.vue'
+import { DBUser } from '@/api/db'
 export default {
   components: {
     Head,
@@ -163,6 +165,8 @@ export default {
     return {
       // 遮罩层判断
       flag: false,
+      name: '',
+      session: '',
       // 跳转注册判断
       isRegister: false,
       bannerList: [
@@ -301,9 +305,23 @@ export default {
       this.flag = x
       this.isRegister = x
     },
+    // 关闭弹窗
     closePop(x) {
       this.flag = x
     },
+    // 获取登录名
+    getname() {
+      this.name = DBUser.getCurrUser().username
+    },
+    getSession(x) {
+      this.session = x
+      if (this.session) {
+        this.$router.go(0)
+      }
+    },
+  },
+  created() {
+    this.getname()
   },
 }
 </script>
@@ -321,9 +339,6 @@ export default {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 200;
-}
-.recipeItem1 {
-  // background-color: #991919;
 }
 .body {
   display: flex;

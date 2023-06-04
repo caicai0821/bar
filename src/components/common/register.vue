@@ -1,7 +1,7 @@
 <!--
  * @Author       : 蔡诗涵
  * @Date         : 2023-04-26 10:56:36
- * @LastEditTime : 2023-06-04 16:54:12
+ * @LastEditTime : 2023-06-04 19:13:22
  * @Description  : 注册组件
  *
 -->
@@ -26,11 +26,16 @@
           <el-input v-model="form.usernick" placeholder="昵称"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-input v-model="form.password" placeholder="密码"></el-input>
+          <el-input
+            v-model="form.password"
+            type="password"
+            placeholder="密码"
+          ></el-input>
         </el-form-item>
         <el-form-item>
           <el-input
             v-model="form.passwordCon"
+            type="password"
             placeholder="确认密码"
           ></el-input>
         </el-form-item>
@@ -68,6 +73,7 @@
 </template>
 
 <script>
+import { DBUser } from '@/api/db'
 export default {
   name: 'MyLogin',
   data() {
@@ -88,7 +94,26 @@ export default {
   },
   methods: {
     register() {
-      this.pushLogin()
+      if (
+        this.form.password &&
+        this.form.passwordCon &&
+        this.form.tel &&
+        this.form.usernick
+      ) {
+        DBUser.addUser({
+          ...this.form,
+        })
+        this.$message({
+          message: '注册成功',
+          type: 'success',
+        })
+        this.pushLogin()
+      } else {
+        this.$message({
+          message: '不能为空',
+          type: 'error',
+        })
+      }
     },
     // 跳转至验证码，无后端暂时取消
     // register1() {

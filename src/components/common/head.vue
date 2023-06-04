@@ -1,7 +1,7 @@
 <!--
  * @Author       : 蔡诗涵
  * @Date         : 2023-04-19 16:58:45
- * @LastEditTime : 2023-06-04 16:15:58
+ * @LastEditTime : 2023-06-04 21:38:57
  * @Description  : 页面头部导航
  *
 -->
@@ -41,17 +41,31 @@
       </div>
       <!-- 登录注册 -->
       <div class="linkStyle divTop">
-        <span @click="login">登录</span>
-        <span>&nbsp;|&nbsp;</span>
-        <span @click="register">注册</span>
+        <div v-if="name">
+          <el-dropdown>
+            <span class="el-dropdown-link">
+              {{ name }}
+            </span>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item @click.native="exit">退出登录</el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+        </div>
+        <div v-else>
+          <span @click="login">登录</span>
+          <span>&nbsp;|&nbsp;</span>
+          <span @click="register">注册</span>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { DBUser } from '@/api/db'
 export default {
   name: 'myHead',
+  props: ['name'],
   data() {
     return {
       search: '',
@@ -62,7 +76,6 @@ export default {
       isRegister: false,
     }
   },
-  created() {},
   methods: {
     changeClass(index) {
       console.log(index)
@@ -80,6 +93,11 @@ export default {
       this.$emit('getRegister', this.isRegister)
       console.log('注册注册！')
       this.isRegister = false
+    },
+    // 退出登录
+    exit() {
+      DBUser.exit()
+      this.$router.go(0)
     },
   },
 }
@@ -115,6 +133,10 @@ export default {
       color: #fff;
       font-size: 18px;
       cursor: pointer;
+      .el-dropdown-link {
+        cursor: pointer;
+        color: #ffffff;
+      }
       .link {
         margin-left: 10px;
       }

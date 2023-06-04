@@ -1,7 +1,7 @@
 <!--
  * @Author       : 蔡诗涵
  * @Date         : 2023-04-26 10:56:36
- * @LastEditTime : 2023-06-04 16:39:05
+ * @LastEditTime : 2023-06-04 21:21:02
  * @Description  : 登录组件
  *
 -->
@@ -48,6 +48,7 @@
 </template>
 
 <script>
+import { DBUser } from '@/api/db'
 export default {
   name: 'MyLogin',
   data() {
@@ -63,8 +64,28 @@ export default {
   methods: {
     // 登录
     login() {
-      console.log(this.form.username)
-      console.log(this.form.password)
+      if (this.form.username && this.form.password) {
+        const user = DBUser.findUser(this.form)
+        if (user) {
+          this.$message({
+            message: '登录成功',
+            type: 'success',
+          })
+          DBUser.login(this.form)
+          this.$emit('isSession', true)
+          this.closePop()
+        } else {
+          this.$message({
+            message: '不存在该用户',
+            type: 'error',
+          })
+        }
+      } else {
+        this.$message({
+          message: '不能为空',
+          type: 'error',
+        })
+      }
     },
     // 向父组件传输跳转注册页
     register() {

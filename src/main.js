@@ -15,6 +15,7 @@ import axios from 'axios' // 引入axios
 import '@/assets/index.less'
 // 引入echarts
 import * as echarts from 'echarts'
+import store from './store/index'
 
 Vue.prototype.$axios = axios // 把axios挂载到vue上
 Vue.prototype.$echarts = echarts
@@ -24,5 +25,6 @@ Vue.config.productionTip = false
 
 new Vue({
   router,
+  store,
   render: (h) => h(App),
 }).$mount('#app')
