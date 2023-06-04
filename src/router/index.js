@@ -44,7 +44,12 @@ const routes = [
   // 用户首页
   {
     path: '/index',
-    component: () => import('@/views/npcViews/WineFormula/WineIndex.vue'),
+    component: () => import('@/views/npcViews/WineIndex.vue'),
+  },
+  // 排行榜
+  {
+    path: '/Ranklist',
+    component: () => import('@/views/npcViews/wineRanklist/wineRanklist.vue'),
   },
   // 管理员页面
   // 登录
