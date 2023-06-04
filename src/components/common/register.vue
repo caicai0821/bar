@@ -1,13 +1,13 @@
 <!--
  * @Author       : 蔡诗涵
  * @Date         : 2023-04-26 10:56:36
- * @LastEditTime : 2023-06-03 21:19:27
+ * @LastEditTime : 2023-06-04 16:54:12
  * @Description  : 注册组件
  *
 -->
 <template>
   <div class="register">
-    <div class="close">
+    <div class="close" @click="closePop">
       <img src="@/assets/icons/关闭2.png" alt="" />
     </div>
     <div class="top">
@@ -39,11 +39,13 @@
           <el-radio v-model="form.radio" label="2">女</el-radio>
         </el-form-item>
         <el-form-item>
-          <button class="registerBtn" @click="register">立即注册</button>
+          <button class="registerBtn" @click.prevent="register">
+            立即注册
+          </button>
         </el-form-item>
       </el-form>
       <div class="content2">
-        <div class="link">已有账号？立即注册！</div>
+        <div class="link" @click="pushLogin">已有账号？立即登录！</div>
       </div>
     </div>
     <div class="code" v-else>
@@ -70,6 +72,7 @@ export default {
   name: 'MyLogin',
   data() {
     return {
+      close: false,
       is: true,
       count: '',
       show: true,
@@ -85,11 +88,13 @@ export default {
   },
   methods: {
     register() {
-      this.is = false
+      this.pushLogin()
     },
-    register1() {
-      this.$router.push('/login')
-    },
+    // 跳转至验证码，无后端暂时取消
+    // register1() {
+    //   this.$router.push('/login')
+    // },
+    // 获取验证码
     getCode() {
       const TIME_COUNT = 60
       if (!this.timer) {
@@ -108,6 +113,14 @@ export default {
         }, 1000)
       }
     },
+    // 关闭弹窗并清除表单
+    closePop() {
+      this.$emit('closePop', this.close)
+    },
+    // 跳转登录组件
+    pushLogin() {
+      this.$emit('getLogin', true)
+    },
   },
 }
 </script>
@@ -116,7 +129,7 @@ export default {
 .register {
   position: relative;
   display: flex;
-  top: 10%;
+  top: 5%;
   left: 50%;
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
@@ -132,12 +145,11 @@ export default {
     left: 400px;
     top: 10px;
     img {
-      width: 35px;
-      height: 35px;
+      width: 30px;
     }
   }
   .top {
-    margin: 20px auto;
+    margin: 15px auto;
     .topImg {
       img {
         width: 100px;
@@ -210,6 +222,8 @@ export default {
       width: 177px;
       height: 45px;
       color: #fff;
+      left: 400px;
+      top: 10px;
       border-radius: 4px;
       box-shadow: 0px 0px 0px 0px;
       background-color: #7d858a;

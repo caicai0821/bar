@@ -1,7 +1,7 @@
 <!--
  * @Author       : 蔡诗涵
  * @Date         : 2023-04-19 16:58:45
- * @LastEditTime : 2023-06-03 20:12:18
+ * @LastEditTime : 2023-06-04 16:15:58
  * @Description  : 页面头部导航
  *
 -->
@@ -73,10 +73,13 @@ export default {
       this.isLogin = true
       this.$emit('getLogin', this.isLogin)
       console.log('登录登录！')
+      this.isLogin = false
     },
     register() {
+      this.isRegister = true
       this.$emit('getRegister', this.isRegister)
       console.log('注册注册！')
+      this.isRegister = false
     },
   },
 }

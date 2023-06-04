@@ -1,20 +1,25 @@
 <!--
  * @Author       : 蔡诗涵
  * @Date         : 2023-06-02 16:30:15
- * @LastEditTime : 2023-06-04 14:22:05
+ * @LastEditTime : 2023-06-04 17:01:58
  * @Description  : 用户端首页
  *
 -->
 <template>
   <div class="wineIndex">
-    <Head @getLogin="getLogin"></Head>
+    <Head @getLogin="getLogin" @getRegister="getRegister"></Head>
     <!-- 登录注册弹窗 -->
     <!-- 遮罩层 -->
     <div class="black_breakgroud" v-if="flag">
-      <login></login>
+      <!-- 登录 -->
+      <login
+        v-if="!isRegister"
+        @isRegister="getRegister"
+        @closePop="closePop"
+      ></login>
+      <!-- 注册 -->
+      <register v-else @closePop="closePop" @getLogin="getLogin"></register>
     </div>
-    <!-- 登录 -->
-    <!-- <login></login> -->
     <!-- 主体内容 -->
     <div class="body">
       <!-- 轮播图 -->
@@ -41,7 +46,6 @@
         <ul class="middle2">
           <li
             class="recipeItem"
-            :class="{ recipeItem1: is === index }"
             v-for="(item, index) in recipeList"
             :key="index"
             @mouseenter="magnify(index)"
@@ -146,19 +150,21 @@ import Head from '@/components/common/head.vue'
 import Tail from '@/components/common/tail.vue'
 import star from '@/components/WineFormula/star.vue'
 import login from '@/components/common/login.vue'
-// import register from '@/components/common/register.vue'
+import register from '@/components/common/register.vue'
 export default {
   components: {
     Head,
     Tail,
     star,
     login,
-    // register,
+    register,
   },
   data() {
     return {
+      // 遮罩层判断
       flag: false,
-      is: '',
+      // 跳转注册判断
+      isRegister: false,
       bannerList: [
         require('@/../public/images/d566648e4b6445ec121ef33848a4ecc5.jpeg'),
         require('@/../public/images/172a3fc975de1e7aa712ddebf5f62b98.png'),
@@ -285,16 +291,18 @@ export default {
     }
   },
   methods: {
+    // 跳转登录组件
     getLogin(x) {
-      console.log(x)
       this.flag = x
+      this.isRegister = false
     },
-    // 放大
-    magnify(x) {
-      this.is = x
+    // 跳转注册组件
+    getRegister(x) {
+      this.flag = x
+      this.isRegister = x
     },
-    magnify1() {
-      // this.is = x
+    closePop(x) {
+      this.flag = x
     },
   },
 }

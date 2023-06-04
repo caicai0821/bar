@@ -1,13 +1,13 @@
 <!--
  * @Author       : 蔡诗涵
  * @Date         : 2023-04-26 10:56:36
- * @LastEditTime : 2023-06-03 21:11:48
+ * @LastEditTime : 2023-06-04 16:39:05
  * @Description  : 登录组件
  *
 -->
 <template>
   <div class="login">
-    <div class="close">
+    <div class="close" @click="closePop">
       <img src="@/assets/icons/关闭2.png" alt="" />
     </div>
     <div class="top">
@@ -26,12 +26,12 @@
           <el-input v-model="form.password" placeholder="密码"></el-input>
         </el-form-item>
         <el-form-item>
-          <button class="loginBtn">登录</button>
+          <button class="loginBtn" @click.prevent="login">登录</button>
         </el-form-item>
       </el-form>
       <div class="content2">
         <div class="link">忘记密码</div>
-        <div class="link">立即注册</div>
+        <div class="link" @click="register">立即注册</div>
       </div>
       <div class="icon">
         <div>
@@ -56,7 +56,29 @@ export default {
         username: '',
         password: '',
       },
+      isRegister: false,
+      close: false,
     }
+  },
+  methods: {
+    // 登录
+    login() {
+      console.log(this.form.username)
+      console.log(this.form.password)
+    },
+    // 向父组件传输跳转注册页
+    register() {
+      this.isRegister = true
+      this.$emit('isRegister', this.isRegister)
+      this.isRegister = false
+      console.log(this.isRegister)
+    },
+    // 关闭弹窗并清除表单
+    closePop() {
+      this.username = ''
+      this.password = ''
+      this.$emit('closePop', this.close)
+    },
   },
 }
 </script>
