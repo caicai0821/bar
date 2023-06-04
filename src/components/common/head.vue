@@ -1,7 +1,7 @@
 <!--
  * @Author       : 蔡诗涵
  * @Date         : 2023-04-19 16:58:45
- * @LastEditTime : 2023-06-04 21:38:57
+ * @LastEditTime : 2023-06-04 22:03:22
  * @Description  : 页面头部导航
  *
 -->
@@ -71,16 +71,20 @@ export default {
       search: '',
       nav: ['首页', '排行榜', '酒厂专题', '新鲜事', '酒单', '社区', '调酒视频'],
       navTop: ['调酒师认证', '味道', '调酒师'],
-      checkindex: 0,
       isLogin: false,
       isRegister: false,
     }
   },
   methods: {
     changeClass(index) {
-      console.log(index)
-      this.checkindex = index
-      console.log(this.checkindex)
+      switch (index) {
+        case 0:
+          this.$router.push('/index')
+          break
+        case 1:
+          this.$router.push('/Ranklist')
+          break
+      }
     },
     login() {
       this.isLogin = true
