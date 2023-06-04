@@ -1,7 +1,7 @@
 <!--
  * @Author       : 蔡诗涵
  * @Date         : 2023-04-19 16:58:45
- * @LastEditTime : 2023-06-04 22:03:22
+ * @LastEditTime : 2023-06-04 23:39:16
  * @Description  : 页面头部导航
  *
 -->
@@ -65,7 +65,7 @@
 import { DBUser } from '@/api/db'
 export default {
   name: 'myHead',
-  props: ['name'],
+  props: ['name', 'checkindex'],
   data() {
     return {
       search: '',
@@ -84,18 +84,64 @@ export default {
         case 1:
           this.$router.push('/Ranklist')
           break
+        case 2:
+          this.$message({
+            type: 'warning',
+            message: '未开发' + index,
+          })
+          break
+        case 3:
+          this.$message({
+            type: 'warning',
+            message: '未开发' + index,
+          })
+          break
+        case 4:
+          this.$message({
+            type: 'warning',
+            message: '未开发' + index,
+          })
+          break
+        case 5:
+          this.$message({
+            type: 'warning',
+            message: '未开发' + index,
+          })
+          break
+        case 6:
+          this.$message({
+            type: 'warning',
+            message: '未开发' + index,
+          })
+          break
+        case 7:
+          this.$message({
+            type: 'warning',
+            message: '未开发' + index,
+          })
+          break
+        case 8:
+          this.$message({
+            type: 'warning',
+            message: '未开发' + index,
+          })
+          break
+        case 9:
+          this.$message({
+            type: 'warning',
+            message: '未开发' + index,
+          })
+          break
       }
     },
     login() {
       this.isLogin = true
       this.$emit('getLogin', this.isLogin)
-      console.log('登录登录！')
       this.isLogin = false
     },
     register() {
       this.isRegister = true
       this.$emit('getRegister', this.isRegister)
-      console.log('注册注册！')
       this.isRegister = false
     },
     // 退出登录

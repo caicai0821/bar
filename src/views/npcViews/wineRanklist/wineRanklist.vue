@@ -1,6 +1,6 @@
 <template>
   <div class="Ranklist">
-    <Head :name="name"></Head>
+    <Head :name="name" :checkindex="'1'"></Head>
     <h1>这是排行榜</h1>
     <tail></tail>
   </div>
@@ -27,7 +27,16 @@ export default {
     },
   },
   created() {
-    this.getname()
+    // 判定用户是否登录
+    if (DBUser.getCurrUser().username) {
+      this.getname()
+    } else {
+      this.$message({
+        type: 'error',
+        message: '请先登录',
+      })
+      this.$router.push('/index')
+    }
   },
 }
 </script>

@@ -1,13 +1,18 @@
 <!--
  * @Author       : 蔡诗涵
  * @Date         : 2023-06-02 16:30:15
- * @LastEditTime : 2023-06-04 21:52:14
+ * @LastEditTime : 2023-06-04 23:46:00
  * @Description  : 用户端首页
  *
 -->
 <template>
   <div class="wineIndex">
-    <Head :name="name" @getLogin="getLogin" @getRegister="getRegister"></Head>
+    <Head
+      :checkindex="'0'"
+      :name="name"
+      @getLogin="getLogin"
+      @getRegister="getRegister"
+    ></Head>
     <!-- 登录注册弹窗 -->
     <!-- 遮罩层 -->
     <div class="black_breakgroud" v-if="flag">
@@ -49,8 +54,7 @@
             class="recipeItem"
             v-for="(item, index) in recipeList"
             :key="index"
-            @mouseenter="magnify(index)"
-            @mouseleave="magnify1()"
+            @click="getWineIntroduction"
           >
             <div>
               <img :src="item.img" alt="" />
@@ -313,11 +317,16 @@ export default {
     getname() {
       this.name = DBUser.getCurrUser().username
     },
+    // 刷新
     getSession(x) {
       this.session = x
       if (this.session) {
         this.$router.go(0)
       }
+    },
+    // 跳转配方页
+    getWineIntroduction() {
+      this.$router.push('/WineIntroduction')
     },
   },
   created() {
@@ -370,6 +379,7 @@ export default {
     margin-bottom: 40px;
     .articleItem {
       width: 300px;
+      width: 23vw;
       height: 320px;
       margin-bottom: 20px;
       border: 1px solid #bbb;
@@ -405,6 +415,7 @@ export default {
     justify-content: space-between;
     padding: 0 20px;
     .recipeItem {
+      cursor: pointer;
       position: relative;
       display: flex;
       flex-direction: column;
@@ -412,7 +423,7 @@ export default {
       align-items: center;
       margin-bottom: 20px;
       padding: 10px 20px;
-      width: 350px;
+      width: 27vw;
       height: 421px;
       border: 1px solid #bbb;
       img {

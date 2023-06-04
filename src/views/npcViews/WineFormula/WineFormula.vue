@@ -1,7 +1,7 @@
 <!--
  * @Author       : 蔡诗涵
  * @Date         : 2023-05-10 16:14:51
- * @LastEditTime : 2023-05-24 15:32:55
+ * @LastEditTime : 2023-06-04 23:33:10
  * @Description  : 酒的配方页
  *
 -->
@@ -54,7 +54,7 @@
         </div>
       </div>
     </div>
-    <Head></Head>
+    <Head :name="name"></Head>
     <div class="body">
       <div class="top">
         <div class="main">
@@ -212,6 +212,7 @@ import upvoteBtnVue from '@/components/WineFormula/upvoteBtn.vue'
 import wineListPopups from '@/components/WineFormula/wineListPopups.vue'
 import comment from '@/components/common/comment.vue'
 import { currentTime } from '@/api/getTime'
+import { DBUser } from '@/api/db'
 export default {
   components: {
     Head,
@@ -239,6 +240,7 @@ export default {
       dialogImageUrl: '',
       dialogVisible: false,
       disabled: false,
+      name: '',
       fileList: [
         // {
         //   name: 'food.jpeg',
@@ -353,9 +355,24 @@ export default {
       // 统计图数据
     }
   },
-  created() {},
+  created() {
+    // 判定用户是否登录
+    if (DBUser.getCurrUser().username) {
+      this.getname()
+    } else {
+      this.$message({
+        type: 'error',
+        message: '请先登录',
+      })
+      this.$router.push('/index')
+    }
+  },
   mounted() {},
   methods: {
+    // 获取登录名
+    getname() {
+      this.name = DBUser.getCurrUser().username
+    },
     // 添加酒单弹窗
     getUp(x) {
       this.isUp = x
