@@ -1,7 +1,7 @@
 /*
  * @Author       : 蔡诗涵
  * @Date         : 2023-04-19 11:18:08
- * @LastEditTime : 2023-06-03 20:55:50
+ * @LastEditTime : 2023-06-03 21:42:03
  * @Description  : 路由
  *
  */
@@ -22,10 +22,10 @@ const routes = [
     path: '/tail',
     component: Tail,
   },
-  {
-    path: '/login',
-    component: () => import('@/components/common/login.vue'),
-  },
+  // {
+  //   path: '/login',
+  //   component: () => import('@/components/common/login.vue'),
+  // },
   {
     path: '/register',
     component: () => import('@/components/common/register.vue'),

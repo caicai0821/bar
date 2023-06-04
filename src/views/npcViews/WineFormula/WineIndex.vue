@@ -1,7 +1,7 @@
 <!--
  * @Author       : 蔡诗涵
  * @Date         : 2023-06-02 16:30:15
- * @LastEditTime : 2023-06-03 20:51:10
+ * @LastEditTime : 2023-06-04 14:22:05
  * @Description  : 用户端首页
  *
 -->
@@ -41,8 +41,11 @@
         <ul class="middle2">
           <li
             class="recipeItem"
+            :class="{ recipeItem1: is === index }"
             v-for="(item, index) in recipeList"
             :key="index"
+            @mouseenter="magnify(index)"
+            @mouseleave="magnify1()"
           >
             <div>
               <img :src="item.img" alt="" />
@@ -155,6 +158,7 @@ export default {
   data() {
     return {
       flag: false,
+      is: '',
       bannerList: [
         require('@/../public/images/d566648e4b6445ec121ef33848a4ecc5.jpeg'),
         require('@/../public/images/172a3fc975de1e7aa712ddebf5f62b98.png'),
@@ -282,9 +286,15 @@ export default {
   },
   methods: {
     getLogin(x) {
-      console.log('1111')
       console.log(x)
       this.flag = x
+    },
+    // 放大
+    magnify(x) {
+      this.is = x
+    },
+    magnify1() {
+      // this.is = x
     },
   },
 }
@@ -303,6 +313,9 @@ export default {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 200;
+}
+.recipeItem1 {
+  // background-color: #991919;
 }
 .body {
   display: flex;
