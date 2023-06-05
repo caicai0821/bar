@@ -1,7 +1,7 @@
 <!--
  * @Author       : 蔡诗涵
  * @Date         : 2023-05-10 16:14:51
- * @LastEditTime : 2023-06-04 23:33:10
+ * @LastEditTime : 2023-06-06 00:44:20
  * @Description  : 酒的配方页
  *
 -->
@@ -407,6 +407,10 @@ export default {
           isNew: false,
         },
       })
+      this.textarea2 = ''
+      this.scoreValue = ''
+      this.drunk = ''
+      this.closeComment()
       // this.$refs.upload.submit()
       // console.dir(this.fileList)
     },
