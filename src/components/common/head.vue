@@ -1,7 +1,7 @@
 <!--
  * @Author       : 蔡诗涵
  * @Date         : 2023-04-19 16:58:45
- * @LastEditTime : 2023-06-04 23:39:16
+ * @LastEditTime : 2023-06-05 21:19:53
  * @Description  : 页面头部导航
  *
 -->
@@ -47,6 +47,7 @@
               {{ name }}
             </span>
             <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item>个人中心</el-dropdown-item>
               <el-dropdown-item @click.native="exit">退出登录</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
