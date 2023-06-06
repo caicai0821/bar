@@ -197,8 +197,8 @@ export default {
     },
     // 跳转酒厂人物页
     changePopel(name) {
-      if (name === '粉红恋人') {
-        this.$router.push('/WineIntroduction')
+      if (name === '江户川柯南') {
+        this.$router.push('/characterInfo')
       } else {
         this.$message({
           type: 'warning',

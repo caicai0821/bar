@@ -51,6 +51,11 @@ const routes = [
     path: '/Ranklist',
     component: () => import('@/views/npcViews/wineRanklist/wineRanklist.vue'),
   },
+  // 酒厂人物介绍
+  {
+    path: '/characterInfo',
+    component: () => import('@/views/npcViews/characterInfo/characterInfo.vue'),
+  },
   // 管理员页面
   // 登录
   {

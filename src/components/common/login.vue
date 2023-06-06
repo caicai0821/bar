@@ -23,7 +23,11 @@
           <el-input v-model="form.username" placeholder="账号"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-input v-model="form.password" placeholder="密码"></el-input>
+          <el-input
+            v-model="form.password"
+            type="password"
+            placeholder="密码"
+          ></el-input>
         </el-form-item>
         <el-form-item>
           <button class="loginBtn" @click.prevent="login">登录</button>
