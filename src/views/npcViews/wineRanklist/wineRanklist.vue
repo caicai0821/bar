@@ -4,7 +4,7 @@
     <div class="main">
       <!-- 更多酒品跳转按钮 -->
       <div class="more">
-        <router-link to="/index">
+        <router-link to="/moreWine">
           <img src="@/assets/icons/酒杯.png" />更多酒品</router-link
         >
       </div>
