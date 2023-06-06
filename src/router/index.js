@@ -1,7 +1,7 @@
 /*
  * @Author       : 蔡诗涵
  * @Date         : 2023-04-19 11:18:08
- * @LastEditTime : 2023-06-03 21:42:03
+ * @LastEditTime : 2023-06-06 13:19:45
  * @Description  : 路由
  *
  */
@@ -119,6 +119,10 @@ const routes = [
 
 const router = new VueRouter({
   routes,
+})
+// 跳转页面时，回到页面顶部
+router.afterEach((to, from, next) => {
+  window.scrollTo(0, 0)
 })
 
 export default router
